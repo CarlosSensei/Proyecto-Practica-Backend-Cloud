@@ -29,6 +29,11 @@ spring:
               uri: lb://SPRING-CLOUD-EUREKA-CLIENT-GAME
               predicates:
                 - Path=/game/**
+
+            - id: client
+              uri: lb://SPRING-CLOUD-EUREKA-CLIENT-CLIENT
+              predicates:
+                - Path=/client/**
   web:
     cors:
       allowed-origins: "http://localhost:4200"

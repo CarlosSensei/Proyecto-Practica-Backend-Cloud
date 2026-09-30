@@ -1,0 +1,10 @@
+INSERT INTO client (id, name) VALUES (1, 'Juan Perez');
+INSERT INTO client (id, name) VALUES (2, 'Ana Garcia');
+INSERT INTO client (id, name) VALUES (3, 'Pedro Martinez');
+INSERT INTO client (id, name) VALUES (4, 'Marta Lopez');
+INSERT INTO client (id, name) VALUES (5, 'Lucia Sanchez');
+INSERT INTO client (id, name) VALUES (6, 'David Fernandez');
+INSERT INTO client (id, name) VALUES (7, 'Sofia Rodriguez');
+INSERT INTO client (id, name) VALUES (8, 'Javier Gonzalez');
+INSERT INTO client (id, name) VALUES (9, 'Elena Martin');
+INSERT INTO client (id, name) VALUES (10, 'Miguel Ruiz');

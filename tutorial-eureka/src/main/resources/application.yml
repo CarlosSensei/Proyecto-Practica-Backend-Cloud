@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: tutorial-eureka
+server:
+  port: 8761
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+prueba:
+  valor: hola
+logging:
+  level:
+    org.springframework.boot.context.config: DEBUG

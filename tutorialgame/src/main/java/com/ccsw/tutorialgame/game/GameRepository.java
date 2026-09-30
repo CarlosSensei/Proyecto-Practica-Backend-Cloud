@@ -1,0 +1,11 @@
+package com.ccsw.tutorialgame.game;
+
+import com.ccsw.tutorialgame.game.model.Game;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
+
+// @author ccsw
+
+public interface GameRepository extends JpaRepository<Game, Long>, JpaSpecificationExecutor<Game> {
+
+}

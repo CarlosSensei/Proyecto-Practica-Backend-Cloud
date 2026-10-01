@@ -1,4 +1,4 @@
-package ccsw.tutorialclient.client.model;
+package com.ccsw.tutorialloans.client.model;
 
 public class ClientDto {
 

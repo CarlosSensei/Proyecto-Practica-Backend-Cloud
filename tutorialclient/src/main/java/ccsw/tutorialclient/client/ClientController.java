@@ -2,9 +2,12 @@ package ccsw.tutorialclient.client;
 
 import ccsw.tutorialclient.client.model.Client;
 import ccsw.tutorialclient.client.model.ClientDto;
+import ccsw.tutorialclient.client.model.ClientSearchDto;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.modelmapper.ModelMapper;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,6 +24,17 @@ public class ClientController {
     public ClientController(ClientService clientService, ModelMapper mapper) {
         this.clientService = clientService;
         this.mapper = mapper;
+    }
+
+    @Operation(summary = "Find Page", description = "Method that return a page of Clients")
+    @PostMapping
+    public Page<ClientDto> findPage(@RequestBody ClientSearchDto dto) {
+
+        Page<Client> page = this.clientService.findPage(dto);
+
+        return new PageImpl<>(page.getContent().stream()
+                .map(e -> mapper.map(e, ClientDto.class)).collect(Collectors.toList()),
+                page.getPageable(), page.getTotalElements());
     }
 
     @Operation(summary = "Find", description = "Method to return a list of clients")

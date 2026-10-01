@@ -3,7 +3,10 @@ package ccsw.tutorialclient.client;
 
 import ccsw.tutorialclient.client.model.Client;
 import ccsw.tutorialclient.client.model.ClientDto;
+import ccsw.tutorialclient.client.model.ClientSearchDto;
 import jakarta.transaction.Transactional;
+import org.springframework.beans.BeanUtils;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,7 +23,13 @@ public class ClientServiceImpl implements ClientService {
 
     @Override
     public Client get(Long id) {
-        return this.clientRepository.findById(Math.toIntExact(id)).orElse(null);
+        return this.clientRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public Page<Client> findPage(ClientSearchDto dto) {
+
+        return this.clientRepository.findAll(dto.getPageable().getPageable());
     }
 
     @Override
@@ -30,7 +39,7 @@ public class ClientServiceImpl implements ClientService {
     }
 
     @Override
-    public void save(Long id, ClientDto clientDto) {
+    public void save(Long id, ClientDto data) {
 
         Client client;
 
@@ -39,6 +48,10 @@ public class ClientServiceImpl implements ClientService {
         } else {
             client = this.get(id);
         }
+
+        BeanUtils.copyProperties(data, client, "id");
+
+        this.clientRepository.save(client);
     }
 
     @Override

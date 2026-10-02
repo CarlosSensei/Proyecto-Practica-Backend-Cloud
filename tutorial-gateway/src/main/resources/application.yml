@@ -10,6 +10,9 @@ spring:
   application:
     name: spring-cloud-eureka-client-gateway
 
+jwt:
+  secret: 12345678901234567890123456789012
+
   cloud:
     gateway:
       server:
@@ -39,6 +42,11 @@ spring:
               uri: lb://SPRING-CLOUD-EUREKA-CLIENT-LOAN
               predicates:
                 - Path=/loan/**
+
+            - id: auth
+              uri: lb://SPRING-CLOUD-EUREKA-CLIENT-AUTH
+              predicates:
+                - Path=/auth/**
   web:
     cors:
       allowed-origins: "http://localhost:4200"

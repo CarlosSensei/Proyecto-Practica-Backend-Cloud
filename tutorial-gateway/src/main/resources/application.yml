@@ -10,49 +10,41 @@ spring:
   application:
     name: spring-cloud-eureka-client-gateway
 
-jwt:
-  secret: 12345678901234567890123456789012
+  main:
+    web-application-type: reactive
 
   cloud:
     gateway:
-      server:
-        webmvc:
-          routes:
-            - id: category
-              uri: lb://SPRING-CLOUD-EUREKA-CLIENT-CATEGORY
-              predicates:
-                - Path=/category/**
+      routes:
+        - id: category
+          uri: lb://SPRING-CLOUD-EUREKA-CLIENT-CATEGORY
+          predicates:
+            - Path=/category/**
 
-            - id: author
-              uri: lb://SPRING-CLOUD-EUREKA-CLIENT-AUTHOR
-              predicates:
-                - Path=/author/**
+        - id: author
+          uri: lb://SPRING-CLOUD-EUREKA-CLIENT-AUTHOR
+          predicates:
+            - Path=/author/**
 
-            - id: game
-              uri: lb://SPRING-CLOUD-EUREKA-CLIENT-GAME
-              predicates:
-                - Path=/game/**
+        - id: game
+          uri: lb://SPRING-CLOUD-EUREKA-CLIENT-GAME
+          predicates:
+            - Path=/game/**
 
-            - id: client
-              uri: lb://SPRING-CLOUD-EUREKA-CLIENT-CLIENT
-              predicates:
-                - Path=/client/**
+        - id: client
+          uri: lb://SPRING-CLOUD-EUREKA-CLIENT-CLIENT
+          predicates:
+            - Path=/client/**
 
-            - id: loan
-              uri: lb://SPRING-CLOUD-EUREKA-CLIENT-LOAN
-              predicates:
-                - Path=/loan/**
+        - id: loan
+          uri: lb://SPRING-CLOUD-EUREKA-CLIENT-LOAN
+          predicates:
+            - Path=/loan/**
 
-            - id: auth
-              uri: lb://SPRING-CLOUD-EUREKA-CLIENT-AUTH
-              predicates:
-                - Path=/auth/**
-  web:
-    cors:
-      allowed-origins: "http://localhost:4200"
-      allowed-methods: "*"
-      allowed-headers: "*"
-      allow-credentials: true
+        - id: auth
+          uri: lb://SPRING-CLOUD-EUREKA-CLIENT-AUTH
+          predicates:
+            - Path=/auth/**
 
 management:
   endpoints:
@@ -64,3 +56,4 @@ logging:
   level:
     org.springframework.cloud.gateway: DEBUG
     org.springframework.web: DEBUG
+    org.springframework.cloud.gateway.route.RouteDefinitionRouteLocator: TRACE
